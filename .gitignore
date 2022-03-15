@@ -3,6 +3,10 @@ package-lock.json
 .idea/
 *.local.*
 
+**/.github
+**/.vscode
+**/.yarn
+
 # dependencies
 /node_modules
 /.pnp
