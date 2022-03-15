@@ -1,0 +1,39 @@
+.bombfarms__div2__div2__div2__button1 {
+  display: flex;
+  justify-content: space-between;
+  width: 107px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  line-height: 20.46px;
+  color: #fff;
+  background-color: transparent;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  padding-top: 1.6px;
+  padding-bottom: 1.6px;
+  padding-left: 8.5px;
+  padding-right: 1.6px;
+  cursor: pointer;
+}
+
+.bombfarms__div2__div2__div2__button2 {
+  display: flex;
+  justify-content: space-between;
+  width: 148px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  line-height: 20.46px;
+  color: #fff;
+  background-color: transparent;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  padding-top: 1.6px;
+  padding-bottom: 1.6px;
+  padding-left: 8.5px;
+  padding-right: 8.5px;
+}
