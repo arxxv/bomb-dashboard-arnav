@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+.boardroom {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  width: 100%;
+  color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.boardroom__grid1 {
+  width: 67%;
+  padding-top: 5px;
+}
+
+.boardroom__grid1__h1 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  text-decoration-line: underline;
+  color: #9ee6ff;
+  cursor: pointer;
+  margin: 0;
+}
+
+.boardroom__grid1__h1__icon {
+  margin-left: 10px;
+}
+
+.boardroom__grid1__but1 {
+  background: radial-gradient(
+    59345.13% 4094144349.28% at 39511.5% -2722397851.45%,
+    rgba(0, 245, 171, 0.5) 0%,
+    rgba(0, 173, 232, 0.5) 100%
+  );
+  border: 0.5px solid #e41a1a;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  padding: 5px 0;
+  margin-top: 15px;
+}
+
+.boardroom__grid1__butbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boardroom__grid1__but2 {
+  width: 48%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #728cdf;
+  box-sizing: border-box;
+  backdrop-filter: blur(25px);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: black;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 0;
+  cursor: pointer;
+}
+
+.boardroom__grid1--whitecircle {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.boardroom__grid1__box {
+  border: 1px solid #728cdf;
+  background: #23284bbf;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  padding-right: 33px;
+}
+
+.boardroom__grid1__box__top {
+  display: flex;
+}
+
+.boardroom__grid1__box__top__infobox {
+  width: 100%;
+}
+
+.boardroom__grid1__box__top__infobox__info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.boardroom__grid1__box__top__infobox__info__left {
+  padding-left: 7px;
+}
+
+.boardroom__grid1__box__top__infobox__info__left___head {
+  display: flex;
+  align-items: center;
+}
+
+.boardroom__grid1__box__top__infobox__info__left___head__h1 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  color: #fff;
+  text-align: left;
+  margin: 0;
+}
+
+.boardroom__grid1__box__top__infobox__info__left___head__span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16.37px;
+  text-align: center;
+  margin-left: 12px;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 16px;
+  box-shadow: 0 0 5px rgba(0, 232, 162, 0.8);
+  background: rgba(0, 232, 162, 0.5);
+}
+
+.boardroom__grid1__box__top__infobox__info__left__p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  margin: 5px 0;
+}
+
+.boardroom__grid1__box__top__infobox__right {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.82px;
+  text-align: left;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
+
+.boardroom__grid1__box__top__infobox__right__span {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21.82px;
+}
+
+.boardroom__grid1__box__top__hr {
+  border: 0.35px solid #c3c5cbbf;
+  margin-left: 7px;
+}
+
+.boardroom__grid1__box__p {
+  text-align: right;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  margin: 3px 0;
+}
+
+.boardroom__grid1__box__p__icon {
+  margin: 0 3px;
+  margin-bottom: -2px;
+}
+
+.boardroom__grid1__box__p__span {
+  text-align: right;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.boardroom__grid1__box__bottom {
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.boardroom__grid1__box__bottom p {
+  margin: 0;
+}
+
+.boardroom__grid1__box__bottom__left {
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.boardroom__grid1__box__bottom__left__div1 {
+  font-size: 14px;
+  line-height: 19.1px;
+  font-weight: 400;
+  margin-right: 50px;
+}
+
+.boardroom__grid1__box__bottom__left__div1__p2 {
+  font-size: 22px;
+  line-height: 30px;
+  padding-top: 5px;
+}
+
+.boardroom__grid1__box__bottom__left__div1--bold {
+  font-size: 16px;
+  line-height: 21.82px;
+  display: flex;
+  align-items: center;
+  margin: 3px 0 !important;
+  margin-left: -3px !important;
+}
+
+.boardroom__grid1__box__bottom__right {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: #fff;
+}
+.boardroom__grid1__box__bottom__right__butbox {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.boardroom__grid1__box__bottom__right__but {
+  display: flex;
+  justify-content: space-between;
+  width: 107px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20.46px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  padding: 1.6px;
+  padding-left: 8.5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.boardroom__grid1__box__bottom__right__but2 {
+  display: flex;
+  justify-content: center;
+  width: 98%;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20.46px;
+  background-color: transparent;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  padding: 1.6px 8.5px;
+  box-sizing: border-box;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.boardroom__grid1__box__bottom__right__but2__img {
+  background: #373747;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  margin-top: 1px;
+}
+
+.boardroom__grid2 {
+  background: rgba(35, 40, 75, 0.75);
+  border: 1px solid #728cdf;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  flex: 0.95;
+  padding: 10px 20px;
+  align-self: stretch;
+}
+
+.boardroom__grid2__h1 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  margin: 0;
+}

@@ -127,6 +127,9 @@ const Nav = () => {
               <Link to="/" className={'navLink ' + classes.link}>
                 Home
               </Link>
+              <Link to="/dashboard" className={'navLink ' + classes.link}>
+                Dashboard
+              </Link>
               <Link to="/farm" className={'navLink ' + classes.link}>
                 Farm
               </Link>

@@ -5,6 +5,7 @@ import DashboardImage from './images/bg.svg';
 import BombFarms from './components/BombFarms';
 import Bonds from './components/Bonds';
 import BombFinanceSummary from './components/BombFinanceSummary';
+import Boardroom from './components/Boardroom';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -17,7 +18,8 @@ const Dashboard = () => {
   return (
     <Page>
       <BackgroundImage />
-      {/* <BombFinanceSummary /> */}
+      <BombFinanceSummary />
+      <Boardroom />
       <BombFarms />
       <Bonds />
     </Page>

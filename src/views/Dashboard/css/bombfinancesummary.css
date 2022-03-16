@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+.bombfinancesec {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  width: 100%;
+  background: rgba(32, 37, 67, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px 30px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.bombfinancesec__h1 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+  margin: 5px;
+}
+
+.bombfinancesec__hr {
+  height: 1px;
+  background: rgba(195, 197, 203, 0.75);
+}
+
+.bombfinancesec__grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.bombfinancesec__grid__1 {
+  padding: 30px 30px 0 15px;
+  width: fit-content;
+}
+
+.bombfinancesec__grid__1__table {
+  border-collapse: collapse;
+}
+
+.bombfinancesec__grid__1__table td {
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.bombfinancesec__grid__1__table--border {
+  border-bottom: 0.5px solid rgba(195, 197, 203, 0.75);
+}
+
+.bombfinancesec__grid__1__table--text1 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  position: relative;
+}
+
+.bombfinancesec__grid__1__table__row1 td {
+  padding: 6px 10px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.bombfinancesec__grid__1__iconbox {
+  background: #373747;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 16px;
+  left: -23px;
+}
+.bombfinancesec__grid__2 {
+  padding: 20px 10px 0 10px;
+  width: fit-content;
+  text-align: center;
+  align-items: center;
+}
+
+.bombfinancesec__grid__2__h1 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  white-space: nowrap;
+  margin-bottom: 5px;
+  padding: 0 30px;
+}
+.bombfinancesec__grid__2__h1__sp {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 37px;
+}
+.bombfinancesec__grid__2__h2 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  white-space: nowrap;
+  margin: 5px 0 10px 0;
+}
+.bombfinancesec__grid__2__h2__sp {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 40px;
+}
+
+.bombfinancesec__grid__2__info {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  margin-top: 3px;
+}
+
+.bombfinancesec--tophr {
+  border-top: 1px solid rgba(195, 197, 203, 0.75);
+  padding: 5px 5px;
+  padding-bottom: 0;
+}
+
+.bombfinancesec__grid__2__info__sp {
+  color: rgb(0, 232, 162);
+}
+
+.bombfinancesec__grid__3 {
+  padding: 0 10px 0 100px;
+  width: fit-content;
+}
+
+.bombfinancesec__grid__3__graph {
+  position: relative;
+  display: inline-block;
+}
+
+.bombfinancesec__grid__3__graph__data {
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #23284b;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.bombfinancesec__grid__3__graph__data--green {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgb(0, 232, 162);
+  margin: 0;
+  margin-top: 2px;
+}
+
+.bombfinancesec__grid__3 td {
+  width: 130px;
+  padding: 5px 0;
+  position: relative;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 12px;
+  font-feature-settings: 'liga' off;
+  color: #d2dfe9;
+}
+
+.bombfinancesec__grid__3__iconbox {
+  background: #373747;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 5px;
+  left: -20px;
+}
+
+.bombfinancesec__grid__3__td__sp {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  font-feature-settings: 'liga' off;
+  color: #ffffff;
+}
