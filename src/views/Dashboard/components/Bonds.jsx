@@ -4,8 +4,16 @@ import bondsBomb from "../images/bondsBomb.svg";
 import bondsBombSmall from "../images/bondsBombSmall.svg";
 import cart from "../images/cart.svg";
 import arrowdown from "../images/downarrow.svg";
+import useBombFinance from '../../../hooks/useBombFinance';
+import {getDisplayBalance} from '../../../utils/formatBalance';
+import useTokenBalance from '../../../hooks/useTokenBalance';
+
 
 function BondsSection(){
+    
+  const bombFinance = useBombFinance();
+  const bondBalance = useTokenBalance(bombFinance?.BBOND)
+
     return(
         <>
             <div className="bondssection">
@@ -24,7 +32,7 @@ function BondsSection(){
                         </div>
                         <div className="bondssection__div2__div1__div2">
                             <p className="bondssection__div2__div1__div2__p">Available to redeem: </p>
-                            <p className="bondssection__div2__div1__div2__h1"><img className="bondssection__div2__div1__div2__img" src={bondsBombSmall}></img><span>456</span></p>
+                            <p className="bondssection__div2__div1__div2__h1"><img className="bondssection__div2__div1__div2__img" src={bondsBombSmall}></img><span>{getDisplayBalance(bondBalance)}</span></p>
                         </div>
                     </div>
                     <div className="bondssection__div2__div2">

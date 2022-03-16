@@ -302,3 +302,9 @@
   line-height: 30px;
   margin: 0;
 }
+
+#but--disable {
+  border: 1px solid gray;
+  cursor: not-allowed;
+  color: gray;
+}

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import '../css/boardroom.css';
 import RightArrow from '../images/rightarrow.svg';
 import Docs from '../images/docs-logo.svg';
@@ -10,20 +10,21 @@ import arrowdown from '../images/arrow-down-circle.svg';
 import arrowup from '../images/arrow-up-circle.svg';
 import Bshares2 from '../images/bshares2.svg';
 
-import { Box, Card, CardContent, Button, Typography, Grid } from '@material-ui/core';
 import { getDisplayBalance } from '../../../utils/formatBalance';
-import useBombStats from '../../../hooks/useBombStats';
 import useStakedBalanceOnBoardroom from '../../../hooks/useStakedBalanceOnBoardroom';
+import useBombStats from '../../../hooks/useBombStats';
 import useEarningsOnBoardroom from '../../../hooks/useEarningsOnBoardroom';
 import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDollars';
 import useBombFinance from '../../../hooks/useBombFinance';
 import useTotalStakedOnBoardroom from '../../../hooks/useTotalStakedOnBoardroom';
 import useTotalValueLocked from '../../../hooks/useTotalValueLocked';
 import useWithdrawCheck from '../../../hooks/boardroom/useWithdrawCheck';
-
-// import useWithdrawFromBoardroom from '../../../hooks/useWithdrawFromBoardroom';
-
-
+import useFetchBoardroomAPR from '../../../hooks/useFetchBoardroomAPR' 
+import useWithdrawFromBoardroom from '../../../hooks/useWithdrawFromBoardroom';
+import useClaimRewardCheck from '../../../hooks/boardroom/useClaimRewardCheck';
+import WithdrawModal from '../../Boardroom/components/WithdrawModal';
+import DepositModal from '../../Boardroom/components/DepositModal';
+import useHarvestFromBoardroom from '../../../hooks/useHarvestFromBoardroom';
 
 function Boardroom() {
     const totalStaked = useTotalStakedOnBoardroom();
@@ -39,7 +40,7 @@ function Boardroom() {
     const earnedInDollars = (Number(bombTokenPriceInDollars) * Number(getDisplayBalance(earnings))).toFixed(2);
     
     const bombFinance = useBombFinance();
-    const stakedBalance = useStakedBalanceOnBoardroom();
+    const stakedBalance = useStakedBalanceOnBoardroom();       
     const stakedTokenPriceInDollars = useStakedTokenPriceInDollars('BSHARE', bombFinance.BSHARE);
     const stakeTokenPriceInDollars = useMemo(
         () =>
@@ -49,9 +50,10 @@ function Boardroom() {
         [stakedTokenPriceInDollars, stakedBalance],
       );
     
+        const dailyAPR = Number(useFetchBoardroomAPR() / 365).toFixed(2)
+    const claimRewardCheck = useClaimRewardCheck();
+    const harvestFromBoardroom = useHarvestFromBoardroom();
 
-    // const withdrawFromBoardroom = useWithdrawFromBoardroom();
-    // console.log(withdrawFromBoardroom)
 
     return (
         <div className="boardroom">
@@ -99,7 +101,7 @@ function Boardroom() {
                         <div className="boardroom__grid1__box__bottom__left">
                             <div className="boardroom__grid1__box__bottom__left__div1">
                                 <p>Daily Returns:</p>
-                                <p className="boardroom__grid1__box__bottom__left__div1__p2">2%</p>
+                                <p className="boardroom__grid1__box__bottom__left__div1__p2">{dailyAPR}%</p>
                             </div>
                             <div className="boardroom__grid1__box__bottom__left__div1">
                                 <p>Your Stake:</p>
@@ -114,11 +116,11 @@ function Boardroom() {
                         </div>
                         <div className="boardroom__grid1__box__bottom__right">
                             <div className="boardroom__grid1__box__bottom__right__butbox">
-                            <div className="boardroom__grid1__box__bottom__right__but"><span>Deposit</span><img src={arrowup}></img></div>
-                            <div className="boardroom__grid1__box__bottom__right__but" onClick={()=>console.log(!canWithdraw || !stakedBalance.eq(0))}><span>Withdraw</span><img src={arrowdown}></img></div>
+                            <div className="boardroom__grid1__box__bottom__right__but" onClick={() => DepositModal()}><span>Deposit</span><img src={arrowup}></img></div>
+                            <div className="boardroom__grid1__box__bottom__right__but" id={!canWithdraw || stakedBalance.eq(0) ? "but--disable" : ""} onClick={()=>WithdrawModal()}><span>Withdraw</span><img src={arrowdown}></img></div>
                             
                             </div>
-                            <div className="boardroom__grid1__box__bottom__right__but2">
+                            <div className="boardroom__grid1__box__bottom__right__but2" id={!claimRewardCheck? "but--disable" : ""} onClick={() => harvestFromBoardroom()}>
                                 Claim Rewards
                                 <div className='boardroom__grid1__box__bottom__right__but2__img'>
                                     <img src={Bshares2} />

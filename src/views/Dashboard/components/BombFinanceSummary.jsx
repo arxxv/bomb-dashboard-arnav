@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 import '../css/bombfinancesummary.css';
@@ -14,18 +14,16 @@ import BSharesBnb from '../images/bshare-bnb.svg';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
 import ProgressCountdown from '../../Boardroom/components/ProgressCountdown';
-
-
 import useBondStats from '../../../hooks/useBondStats';
 import usebShareStats from '../../../hooks/usebShareStats';
 import useBombStats from '../../../hooks/useBombStats';
 import useCurrentEpoch from '../../../hooks/useCurrentEpoch';
 import useTreasuryAllocationTimes from '../../../hooks/useTreasuryAllocationTimes';
 import useTotalValueLocked from '../../../hooks/useTotalValueLocked';
-import useCashPriceInEstimatedTWAP from '../../../hooks/useCashPriceInEstimatedTWAP';
 import useCashPriceInLastTWAP from '../../../hooks/useCashPriceInLastTWAP';
+import useTokenBalance from '../../../hooks/useTokenBalance';
+import useBombFinance from '../../../hooks/useBombFinance';
 import useTreasuryAmount from '../../../hooks/useTreasuryAmount';
-import useStatsForPool from '../../../hooks/useStatsForPool';
 
 
 Chart.register(ArcElement);
@@ -34,29 +32,67 @@ function BombFinanceSec() {
     const bondStats = useBondStats()
     const bbondTotalSupply = Number(bondStats?.totalSupply / 1000).toFixed(2)
     const bbondPriceInDollars = bondStats?.priceInDollars
-    const bbondTokenInFMT = bondStats?.tokenInFtm
     const bbondCirculatingSupply = Number(bondStats?.circulatingSupply/1000).toFixed(2)
     const bShareStats = usebShareStats()
     const bShareTotalSupply = Number(bShareStats?.totalSupply / 1000).toFixed(2)
     const bSharePriceInDollars = bShareStats?.priceInDollars
-    const bShareTokenInFMT = bShareStats?.tokenInFtm
     const bShareCirculatingSupply = Number(bShareStats?.circulatingSupply/1000).toFixed(2)
     const bombStats = useBombStats()
     const bombTotalSupply = Number(bombStats?.totalSupply / 1000).toFixed(2)
     const bombPriceInDollars = bombStats?.priceInDollars
-    const bombTokenInFMT = bombStats?.tokenInFtm
     const bombCirculatingSupply = Number(bombStats?.circulatingSupply/1000).toFixed(2)
     const currentEpoch = useCurrentEpoch().toNumber();
     const { to } = useTreasuryAllocationTimes();
     const TVL = Number(useTotalValueLocked()).toFixed(0)
-    // const TWAP = useCashPriceInEstimatedTWAP()
     const lastTWAP = useCashPriceInLastTWAP().toNumber()
-    // const tresuryAmount = useTreasuryAmount()
-    // console.log(tresuryAmount)
+
+    const [otherTokensSupply, setOtherTokensSupply] = useState(0)
+    const [BombTotalSupply, setBombTotalSupply] = useState()
+    const [BShareTotalSupply, setBShareTotalSupply] = useState()
+    const [BbondTotalSupply, setBbondTotalSupply] = useState()
+    const [bnbTokensSupply, setbnbTokensSupply] = useState()
+    const [bbomb_btcbTokensSupply, setbbomb_btcbTokensSupply] = useState()
+    const [flag, setflag] = useState(true);
+
+    const bombFinance = useBombFinance();
+    const allTokens = ['BBOMBBOMB', 'BBOMBBTCB', 'BBOMB_BOMB', 'BOMBBTCB_LP', 'BOMB_BORROWABLE', 'BTC', 'BTCB_BORROWABLE', 'XBOMB']
+    if(flag){
+        allTokens.map((token)=>{
+            bombFinance[token].totalSupply().then((res)=>{
+                setOtherTokensSupply(otherTokensSupply+res/1000000)
+            })
+        });
+        setflag(false);
+    }
+
+    bombFinance["BOMB"].totalSupply().then((res)=>{
+        setBombTotalSupply(res/1000000)
+    })
+    bombFinance["BSHARE"].totalSupply().then((res)=>{
+        setBShareTotalSupply(res/1000000)
+    })
+    bombFinance["BBOND"].totalSupply().then((res)=>{
+        setBbondTotalSupply(res/1000000)
+    })
+    bombFinance["BNB"].totalSupply().then((res)=>{
+        setbnbTokensSupply(res/1000000)
+    })
+    bombFinance["BBOMB_BTCB"].totalSupply().then((res)=>{
+        setbbomb_btcbTokensSupply(res/1000000)
+    })
+
+    const totalSuppyValue = BombTotalSupply+BShareTotalSupply+BbondTotalSupply+bbomb_btcbTokensSupply+bnbTokensSupply+otherTokensSupply
+    const bBondPercentage = Number(BbondTotalSupply / totalSuppyValue * 100).toFixed(0)
+    const bSharePercentage = Number(BShareTotalSupply / totalSuppyValue * 100).toFixed(0)
+    const bbomb_btcbPercentage = Number(bbomb_btcbTokensSupply / totalSuppyValue * 100).toFixed(0)
+    const bnbPercentage = Number(bnbTokensSupply / totalSuppyValue * 100).toFixed(0)
+    const restPercentage = Number(otherTokensSupply / totalSuppyValue * 100).toFixed(0)
+    const bombPercentage = Number(BombTotalSupply / totalSuppyValue * 100).toFixed(0)
+
 
     const data = {
         datasets: [{
-            data: [17, 17, 17, 17, 12, 20],
+            data: [bombPercentage, bbomb_btcbPercentage, bSharePercentage, bnbPercentage, bBondPercentage, restPercentage],
             backgroundColor: [
                 '#00E8A2',
                 '#C3C5CB',
@@ -67,7 +103,6 @@ function BombFinanceSec() {
             ]
         }]
     };
-
     const options = {
         cutout: "85%",
         maintainAspectRatio: false, responsive: false,
@@ -182,13 +217,13 @@ function BombFinanceSec() {
                                 <div className='bombfinancesec__grid__3__iconbox'>
                                     <img src={Bomb2} />
                                 </div>
-                                Bomb:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>17%</span>
+                                Bomb:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>{bombPercentage}%</span>
                             </td>
                             <td>
                                 <div className='bombfinancesec__grid__3__iconbox'>
                                     <img src={BombBitcoin} />
                                 </div>
-                                Bomb-BTCB:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>17%</span>
+                                Bomb-BTCB:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>{bbomb_btcbPercentage}%</span>
                             </td>
                         </tr>
                         <tr>
@@ -196,13 +231,13 @@ function BombFinanceSec() {
                                 <div className='bombfinancesec__grid__3__iconbox'>
                                     <img src={BShares2} />
                                 </div>
-                                BShare:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>12%</span>
+                                BShare:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>{bSharePercentage}%</span>
                             </td>
                             <td>
                                 <div className='bombfinancesec__grid__3__iconbox'>
                                     <img src={BSharesBnb} />
                                 </div>
-                                Bshare-BNB:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>17%</span>
+                                Bshare-BNB:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>{bnbPercentage}%</span>
                             </td>
                         </tr>
                         <tr>
@@ -210,11 +245,11 @@ function BombFinanceSec() {
                                 <div className='bombfinancesec__grid__3__iconbox'>
                                     <img src={BBond2} />
                                 </div>
-                                BBond:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>20%</span>
+                                BBond:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>{bBondPercentage}%</span>
                             </td>
                             <td>
                                 <div className='bombfinancesec__grid__3__iconbox'></div>
-                                Others:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>17%</span>
+                                Others:&nbsp; <span className='bombfinancesec__grid__3__td__sp'>{restPercentage}%</span>
                             </td>
                         </tr>
                     </table>
